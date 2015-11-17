@@ -51,8 +51,9 @@ var g_points = []; // The array for the position of a mouse press
 function click(ev, gl, canvas, a_Position) {
   var x = ev.clientX; // x coordinate of a mouse pointer
   var y = ev.clientY; // y coordinate of a mouse pointer
+  //获取canvas在浏览器中的坐标
   var rect = ev.target.getBoundingClientRect() ;
-
+  //将浏览器的坐标转化为canvas的坐标 p51
   x = ((x - rect.left) - canvas.width/2)/(canvas.width/2);
   y = (canvas.height/2 - (y - rect.top))/(canvas.height/2);
   // Store the coordinates to g_points array

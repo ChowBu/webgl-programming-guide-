@@ -10,7 +10,7 @@ var VSHADER_SOURCE =
 // Fragment shader program
 var FSHADER_SOURCE =
   'precision mediump float;\n' +
-  'uniform vec4 u_FragColor;\n' +  // uniform変数
+  'uniform vec4 u_FragColor;\n' +  // uniform変数传入到片元着色器的颜色
   'void main() {\n' +
   '  gl_FragColor = u_FragColor;\n' +
   '}\n';
@@ -39,14 +39,14 @@ function main() {
     return;
   }
 
-  // Get the storage location of u_FragColor
+  // Get the storage location of u_FragColor将点击点的颜色传入到片元着色器
   var u_FragColor = gl.getUniformLocation(gl.program, 'u_FragColor');
   if (!u_FragColor) {
     console.log('Failed to get the storage location of u_FragColor');
     return;
   }
 
-  // Register function (event handler) to be called on a mouse press
+  // Register function (event handler) to be called on a mouse press获取点击点的颜色
   canvas.onmousedown = function(ev){ click(ev, gl, canvas, a_Position, u_FragColor) };
 
   // Specify the color for clearing <canvas>
@@ -58,6 +58,7 @@ function main() {
 
 var g_points = [];  // The array for the position of a mouse press
 var g_colors = [];  // The array to store the color of a point
+//计算不同区域不同的颜色
 function click(ev, gl, canvas, a_Position, u_FragColor) {
   var x = ev.clientX; // x coordinate of a mouse pointer
   var y = ev.clientY; // y coordinate of a mouse pointer
