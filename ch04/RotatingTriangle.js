@@ -1,5 +1,8 @@
 // RotatingTriangle.js (c) 2012 matsuda
 // Vertex shader program
+// 不停的旋转矩阵，这个没什么新东西，就是加了个时间，随着时间前进不断更新，重新绘制
+// animate 不断的计算三角形当前角度  得到新的角度后，传入到draw函数，不断绘制
+// 
 var VSHADER_SOURCE =
   'attribute vec4 a_Position;\n' +
   'uniform mat4 u_ModelMatrix;\n' +
@@ -110,7 +113,7 @@ function draw(gl, n, currentAngle, modelMatrix, u_ModelMatrix) {
   gl.drawArrays(gl.TRIANGLES, 0, n);
 }
 
-// Last time that this function was called
+// Last time that this function was called 不断的计算三角形的角度
 var g_last = Date.now();
 function animate(angle) {
   // Calculate the elapsed time

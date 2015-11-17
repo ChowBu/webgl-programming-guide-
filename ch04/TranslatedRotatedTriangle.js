@@ -1,5 +1,6 @@
 // TranslatedRotatedTriangle.js (c) 2012 matsuda
 // Vertex shader program
+// 4-2的姊妹demo，只是顺序不一样，但是矩阵没有交换律，所以两者位置不一样
 var VSHADER_SOURCE =
   'attribute vec4 a_Position;\n' +
   'uniform mat4 u_ModelMatrix;\n' +

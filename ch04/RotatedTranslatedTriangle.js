@@ -1,5 +1,7 @@
 // RotatedTranslatedTriangle.js (c) 2012 matsuda
 // Vertex shader program
+// 同时设置旋转位移矩阵， 是在js文件里面的同一个矩阵，先设置旋转，然后在该矩阵基础上，设置位移，不是传递两个矩阵到着色器，然后相乘
+// 
 var VSHADER_SOURCE =
   'attribute vec4 a_Position;\n' +
   'uniform mat4 u_ModelMatrix;\n' +
@@ -43,10 +45,10 @@ function main() {
   // Calculate a model matrix
   var ANGLE = 60.0; // The rotation angle
   var Tx = 0.5;     // Translation distance
-  modelMatrix.setRotate(ANGLE, 0, 0, 1);  // Set rotation matrix
-  modelMatrix.translate(Tx, 0, 0);        // Multiply modelMatrix by the calculated translation matrix
+  modelMatrix.setRotate(ANGLE, 0, 0, 1);  // Set rotation matrix 先设置旋转
+  modelMatrix.translate(Tx, 0, 0);        // Multiply modelMatrix by the calculated translation matrix 然后设置位移
 
-  // Pass the model matrix to the vertex shader
+  // Pass the model matrix to the vertex shader 将旋转位移矩阵传递到顶点着色器
   var u_ModelMatrix = gl.getUniformLocation(gl.program, 'u_ModelMatrix');
   if (!u_ModelMatrix) {
     console.log('Failed to get the storage location of u_xformMatrix');

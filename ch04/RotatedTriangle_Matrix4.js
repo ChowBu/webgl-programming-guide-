@@ -1,5 +1,6 @@
 // RotatedTriangle_Matrix4.js (c) 2012 matsuda
 // Vertex shader program
+// 使用封装好的旋转矩阵实现旋转
 var VSHADER_SOURCE =
   'attribute vec4 a_Position;\n' +
   'uniform mat4 u_xformMatrix;\n' +
@@ -37,14 +38,14 @@ function main() {
     return;
   }
 
-  // Create Matrix4 object for the rotation matrix
+  // Create Matrix4 object for the rotation matrix 创建一个四元矩阵
   var xformMatrix = new Matrix4();
 
   // Set the rotation matrix
-  var ANGLE = 90.0; // The rotation angle
+  var ANGLE = 90.0; // The rotation angle 设置旋转角度，以及旋转轴
   xformMatrix.setRotate(ANGLE, 0, 0, 1);
 
-  // Pass the rotation matrix to the vertex shader
+  // Pass the rotation matrix to the vertex shader 将旋转矩阵传到顶点着色器
   var u_xformMatrix = gl.getUniformLocation(gl.program, 'u_xformMatrix');
   if (!u_xformMatrix) {
     console.log('Failed to get the storage location of u_xformMatrix');
