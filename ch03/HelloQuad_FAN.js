@@ -1,5 +1,6 @@
 // HelloQuad_FAN.js (c) 2012 matsuda
 // Vertex shader program
+// 和之前相比绘制方式变了而已，变成了gl.TRIANGLE_FAN
 var VSHADER_SOURCE =
   'attribute vec4 a_Position;\n' +
   'void main() {\n' +

@@ -1,9 +1,11 @@
 // TranslatedTriangle.js (c) 2012 matsuda
 // Vertex shader program
+// 和之前相比这次，发生了偏移，主要是，在外面获取了一个偏移向量，然后添加到现有位置
 var VSHADER_SOURCE =
   'attribute vec4 a_Position;\n' +
-  'uniform vec4 u_Translation;\n' +
+  'uniform vec4 u_Translation;\n' +//获取偏移向量
   'void main() {\n' +
+  //将获取的偏移向量添加到现有的位置上
   '  gl_Position = a_Position + u_Translation;\n' +
   '}\n';
 

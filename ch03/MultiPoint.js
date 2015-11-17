@@ -1,5 +1,12 @@
 // MultiPoint.js (c) 2012 matsuda
 // Vertex shader program
+// 
+// 第二章全都是普通数据，就是平时用的普通geometry的操作，第三章这里就是讲VBO 顶点缓冲区对象
+// 
+// 
+// 这是创建一个定点缓冲区的全部操作
+// 五步创建顶点缓冲区p69
+// 
 var VSHADER_SOURCE =
   'attribute vec4 a_Position;\n' +
   'void main() {\n' +
@@ -46,23 +53,28 @@ function main() {
   // Draw three points
   gl.drawArrays(gl.POINTS, 0, n);
 }
-
+/**
+ * [initVertexBuffers description]创建一个顶点buffer
+ * @param  {[type]} gl [description]
+ * @return {[type]}    [description]
+ */
 function initVertexBuffers(gl) {
   var vertices = new Float32Array([
     0.0, 0.5,   -0.5, -0.5,   0.5, -0.5
   ]);
   var n = 3; // The number of vertices
 
-  // Create a buffer object
+  // Create a buffer object创建顶点buffer
   var vertexBuffer = gl.createBuffer();
   if (!vertexBuffer) {
     console.log('Failed to create the buffer object');
     return -1;
   }
 
-  // Bind the buffer object to target
+  // Bind the buffer object to target绑定顶点buffer
   gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-  // Write date into the buffer object
+
+  // Write date into the buffer object 在顶点写入写入数据
   gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
 
   var a_Position = gl.getAttribLocation(gl.program, 'a_Position');
@@ -70,10 +82,10 @@ function initVertexBuffers(gl) {
     console.log('Failed to get the storage location of a_Position');
     return -1;
   }
-  // Assign the buffer object to a_Position variable
+  // Assign the buffer object to a_Position variable 将缓冲区对象分配给变量
   gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, 0, 0);
 
-  // Enable the assignment to a_Position variable
+  // Enable the assignment to a_Position variable 开启变量
   gl.enableVertexAttribArray(a_Position);
 
   return n;

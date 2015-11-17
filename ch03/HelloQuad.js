@@ -1,5 +1,8 @@
 // HelloQuad.js (c) 2012 matsuda
 // Vertex shader program
+// 绘制四边形，和之前的区别就是，
+// 1点数变了，2然后绘制方式变了，变成了gl.TRIANGLE_STRIP
+// 用来绘制棒状的形状
 var VSHADER_SOURCE =
   'attribute vec4 a_Position;\n' +
   'void main() {\n' +

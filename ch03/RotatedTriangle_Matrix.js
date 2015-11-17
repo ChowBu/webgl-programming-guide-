@@ -1,5 +1,7 @@
 // RotatedTriangle_Matrix.js (c) matsuda
 // Vertex shader program
+// 之前的是translate 现在是rotate，在之前的位置点之前乘以旋转矩阵
+// 和之前相比多了两部，获取旋转矩阵，然后乘以前的位置
 var VSHADER_SOURCE =
   'attribute vec4 a_Position;\n' +
   'uniform mat4 u_xformMatrix;\n' +
@@ -44,7 +46,7 @@ function main() {
   var radian = Math.PI * ANGLE / 180.0; // Convert to radians
   var cosB = Math.cos(radian), sinB = Math.sin(radian);
 
-  // Note: WebGL is column major order
+  // Note: WebGL is column major order 声明一个旋转矩阵
   var xformMatrix = new Float32Array([
      cosB, sinB, 0.0, 0.0,
     -sinB, cosB, 0.0, 0.0,
@@ -52,7 +54,7 @@ function main() {
       0.0,  0.0, 0.0, 1.0
   ]);
 
-  // Pass the rotation matrix to the vertex shader
+  // Pass the rotation matrix to the vertex shader 获取旋转矩阵，传到顶点着色器
   var u_xformMatrix = gl.getUniformLocation(gl.program, 'u_xformMatrix');
   if (!u_xformMatrix) {
     console.log('Failed to get the storage location of u_xformMatrix');

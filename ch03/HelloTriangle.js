@@ -1,5 +1,10 @@
 // HelloTriangle.js (c) 2012 matsuda
 // Vertex shader program
+// 之前是传了三个点，绘制三个点，这里是绘制一个三角形
+// 改变了两个地方，
+// 一个是绘制点的大小的时候的gl_PointSize 这个是只有绘制点的时候才用
+// 二是gl.drawArrays 的 gl.POINTS 变成了 gl.TRIANGLES
+
 var VSHADER_SOURCE =
   'attribute vec4 a_Position;\n' +
   'void main() {\n' +

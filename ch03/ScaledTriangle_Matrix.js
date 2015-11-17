@@ -1,5 +1,6 @@
 // ScaledTriangle_Matrix.js (c) 2012 matsuda
 // Vertex shader program
+// 缩放矩阵
 var VSHADER_SOURCE =
   'attribute vec4 a_Position;\n' +
   'uniform mat4 u_xformMatrix;\n' +
