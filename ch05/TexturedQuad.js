@@ -1,5 +1,17 @@
 // TexturedQuad.js (c) 2012 matsuda and kanda
 // Vertex shader program
+// 这里讲的是一个贴图使用的完整步骤p157
+// 
+// 这是shader里面的操作
+// 整个流程就是获取贴图坐标传递到顶点着色器，然后从顶点着色器传递到片元着色器插值
+// 然后在片元着色器传入纹理单元sampler2D，使用之前的坐标v_TexCoord和纹理单元获取颜色texture2D(u_Sampler, v_TexCoord)
+// 
+// 在使用THREE的时候uniform sampler2D u_Sampler u_Sampler 就是map，传递到片元着色器的图片
+// 
+// 
+// 
+// 在js中还有各种图片配置，在THREE里面体现在各种配置，包括取样方式
+// 
 var VSHADER_SOURCE =
   'attribute vec4 a_Position;\n' +
   'attribute vec2 a_TexCoord;\n' +
@@ -14,7 +26,9 @@ var FSHADER_SOURCE =
   '#ifdef GL_ES\n' +
   'precision mediump float;\n' +
   '#endif\n' +
+  //指定纹理单元编号
   'uniform sampler2D u_Sampler;\n' +
+  //指定纹理单元坐标
   'varying vec2 v_TexCoord;\n' +
   'void main() {\n' +
   '  gl_FragColor = texture2D(u_Sampler, v_TexCoord);\n' +

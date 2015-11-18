@@ -1,5 +1,11 @@
 // ColoredTriangle.js (c) 2012 matsuda
 // Vertex shader program
+// 和之前的不同在于之前是用三个点绘制三角形
+// 现在是绘制整个三角形面，3个不同的地方
+// 1.绘制的方式不一样gl.TRIANGLES,之前的是gl.POINTS
+// 2.去掉了gl.PointSize,这个是专用来画点的
+// 3.使用varying变量将颜色从顶点着色器传到了片元着色器，实现了颜色插值
+// 
 var VSHADER_SOURCE = 
   'attribute vec4 a_Position;\n' +
   'attribute vec4 a_Color;\n' +

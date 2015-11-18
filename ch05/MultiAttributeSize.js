@@ -1,7 +1,12 @@
 // MultiAttributeSize.js (c) 2012 matsuda
 // Vertex shader program
+// 此处和之前的第二章差不多，传入点显示，不同在于传入了一个点大小的参数，
+// 实现了绘制不同点的大小，
+// 这里主要讲传入了多个数据
+// 关于传输方法，使用数据位移gl.vertexAttribPointer 的不同参数，在p138
 var VSHADER_SOURCE =
   'attribute vec4 a_Position;\n' +
+  //从js传入一个控制点大小的参数，绘制不同大小的点
   'attribute float a_PointSize;\n' +
   'void main() {\n' +
   '  gl_Position = a_Position;\n' +
@@ -76,6 +81,8 @@ function initVertexBuffers(gl) {
   }
   gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, 0, 0);
   gl.enableVertexAttribArray(a_Position);
+
+
 
   // Bind the point size buffer object to target
   gl.bindBuffer(gl.ARRAY_BUFFER, sizeBuffer);

@@ -1,5 +1,7 @@
 // MultiAttributeColor.js (c) 2012 matsuda
 // Vertex shader program
+// 相对于之前的demo，这里的是各个不同的点颜色不同，使用的方法是传入换入缓冲区
+// 不同的颜色然后获取
 var VSHADER_SOURCE =
   'attribute vec4 a_Position;\n' +
   'attribute vec4 a_Color;\n' +
@@ -81,6 +83,13 @@ function initVertexBuffers(gl) {
     console.log('Failed to get the storage location of a_Position');
     return -1;
   }
+  // 第一个是传入到哪里，第二个是传入的数据有几个分量，第三个是数据类型，第四个是否，单位化，第五个是传入数据的长度
+  // 第六个是指从哪里开始获取数据
+  // 
+  // 这里一共分两次传输，第一个是点的位置，是两个分量，x和y，所以第二个参数是2，一个系列的数据是五条
+  // 所以倒数第二个参数是FSIZE * 5 ，点是前面两条，所以最后的参数是0，颜色是最后三位，所以后面的获取最后是从第三位开始的，参数是
+  // FSIZE * 2
+  // 
   gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, FSIZE * 5, 0);
   gl.enableVertexAttribArray(a_Position);  // Enable the assignment of the buffer object
 
