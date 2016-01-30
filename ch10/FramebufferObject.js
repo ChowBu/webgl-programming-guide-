@@ -1,5 +1,6 @@
 // FramebufferObject.js (c) matsuda and kanda
 // Vertex shader program
+//fbo不是很明白
 var VSHADER_SOURCE =
   'attribute vec4 a_Position;\n' +
   'attribute vec2 a_TexCoord;\n' +
