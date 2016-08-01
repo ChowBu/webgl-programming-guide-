@@ -1,6 +1,4 @@
-// TranslatedTriangle.js (c) 2012 matsuda
-// Vertex shader program
-// 和之前相比这次，发生了偏移，主要是，在外面获取了一个偏移向量，然后添加到现有位置
+
 var VSHADER_SOURCE =
   'attribute vec4 a_Position;\n' +
   'uniform vec4 u_Translation;\n' +//获取偏移向量
@@ -19,7 +17,7 @@ var FSHADER_SOURCE =
 var Tx = 0.5, Ty = 0.5, Tz = 0.0;
 
 function main() {
-  // Retrieve <canvas> element
+  // 获取canvas
   var canvas = document.getElementById('webgl');
 
   // Get the rendering context for WebGL

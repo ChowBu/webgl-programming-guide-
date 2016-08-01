@@ -48,6 +48,15 @@ function main() {
 }
 
 var g_points = []; // The array for the position of a mouse press
+/**
+ * [click description] 这里我们可以看见，每次点击后我们只是更新了顶点数据，没有更新顶点的地址，
+ * 以及清除了颜色，我们还能更新其他信息，比如着色器，这个很重要，以后再循环会经常使用到
+ * @param  {[type]} ev         [description]
+ * @param  {[type]} gl         [description]
+ * @param  {[type]} canvas     [description]
+ * @param  {[type]} a_Position [description]
+ * @return {[type]}            [description]
+ */
 function click(ev, gl, canvas, a_Position) {
   var x = ev.clientX; // x coordinate of a mouse pointer
   var y = ev.clientY; // y coordinate of a mouse pointer
@@ -60,9 +69,11 @@ function click(ev, gl, canvas, a_Position) {
   g_points.push(x); g_points.push(y);
 
   // Clear <canvas>
+  // 如果不重新制定颜色的话，就会是白色
   gl.clear(gl.COLOR_BUFFER_BIT);
 
   var len = g_points.length;
+
   for(var i = 0; i < len; i += 2) {
     // Pass the position of a point to a_Position variable
     gl.vertexAttrib3f(a_Position, g_points[i], g_points[i+1], 0.0);

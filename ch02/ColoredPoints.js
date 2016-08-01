@@ -1,5 +1,9 @@
 // ColoredPoint.js (c) 2012 matsuda
 // Vertex shader program
+/**
+ * 这个demo和之前最大的区别就是现在传入了uniform数据
+ * 
+ */
 var VSHADER_SOURCE =
   'attribute vec4 a_Position;\n' +
   'void main() {\n' +

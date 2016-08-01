@@ -1,5 +1,6 @@
 // LookAtTriangles.js (c) 2012 matsuda
 // Vertex shader program
+// 这个demo和4-1的demo差不多除了颜色，三角个数不同以外，其他的差别就是矩阵设置了一下
 var VSHADER_SOURCE =
   'attribute vec4 a_Position;\n' +
   'attribute vec4 a_Color;\n' +
@@ -56,6 +57,7 @@ function main() {
 
   // Set the matrix to be used for to set the camera view
   var viewMatrix = new Matrix4();
+  //在这里设置矩阵的视点 观察点 向上方向
   viewMatrix.setLookAt(0.20, 0.25, 0.25, 0, 0, 0, 0, 1, 0);
 
   // Set the view matrix

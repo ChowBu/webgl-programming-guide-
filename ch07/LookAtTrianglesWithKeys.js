@@ -49,6 +49,7 @@ function main() {
 
   // Get the storage location of u_ViewMatrix
   var u_ViewMatrix = gl.getUniformLocation(gl.program, 'u_ViewMatrix');
+ 
   if(!u_ViewMatrix) { 
     console.log('Failed to get the storage locations of u_ViewMatrix');
     return;

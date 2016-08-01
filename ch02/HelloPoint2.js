@@ -30,15 +30,24 @@ function main() {
     return;
   }
 
-  // Get the storage location of a_Position
+
+
+
+
+  // Get the storage location of a_Position 与上一个demo的最大区别就是这里的点是从外面传进来的
+  // 这里的函数是获取变量的位置
   var a_Position = gl.getAttribLocation(gl.program, 'a_Position');
   if (a_Position < 0) {
     console.log('Failed to get the storage location of a_Position');
     return;
   }
 
-  // Pass vertex position to attribute variable 获取js的变量，一会传递到顶点着色器
+  // Pass vertex position to attribute variable 将顶点位置传输给a_Position
   gl.vertexAttrib3f(a_Position, 0.0, 0.0, 0.0);
+
+
+
+
 
   // Specify the color for clearing <canvas>
   gl.clearColor(0.0, 0.0, 0.0, 1.0);

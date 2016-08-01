@@ -15,7 +15,7 @@ var FSHADER_SOURCE =
   '}\n';
 
 // The scaling factor
-var Sx = 1.0, Sy = 1.5, Sz = 1.0;
+var Sx = 1.5, Sy = 1.5, Sz = 1.0;
 
 function main() {
   // Retrieve <canvas> element
